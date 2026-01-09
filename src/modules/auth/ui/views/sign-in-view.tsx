@@ -14,6 +14,7 @@ import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 import { use } from "react";
 import { useRouter } from "next/navigation";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 
 const formSchema = z.object({
@@ -43,11 +44,32 @@ export const SignInView = () => {
             {
             email: data.email,
             password: data.password,
+            callbackURL: "/",
             },
         {
             onSuccess: () => {
                 setPending(false);
                 router.push("/");
+            },
+            onError: ({ error }) => {
+                setPending(false);
+                setError(error.message);
+            }
+        });
+    };
+
+    const onSocial = (provider: "github" | "google") => {
+        setError(null);
+        setPending(true);
+
+        authClient.signIn.social(
+            {
+            provider: provider,
+            callbackURL: "/",
+            },
+        {
+            onSuccess: () => {
+                setPending(false);
             },
             onError: ({ error }) => {
                 setPending(false);
@@ -103,8 +125,8 @@ export const SignInView = () => {
                             </span>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            <Button disabled={pending} variant="outline" type="button" className="w-full">Google</Button>
-                            <Button disabled={pending} variant="outline" type="button" className="w-full">GitHub</Button>
+                            <Button disabled={pending} onClick={() => onSocial("google")} variant="outline" type="button" className="w-full"><FaGoogle /></Button>
+                            <Button disabled={pending} onClick={() => onSocial("github")} variant="outline" type="button" className="w-full"><FaGithub /></Button>
                         </div>
                         <div className="text-center text-sm">
                             Don&apos;t have an account?{" "} <Link href="/sign-up" className="underline underline-offset-4">Sign up</Link>
@@ -115,7 +137,7 @@ export const SignInView = () => {
                     <div className="bg-radial from-green-700 to-green-900 relative hidden md:flex flex-col gap-y-4 items-center justify-center">
                         <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px]" />
                         <p className="text-2xl font-semibold text-white">
-                            Meet.AI
+                            Guide.AI
                         </p>
                     </div>
             </CardContent>

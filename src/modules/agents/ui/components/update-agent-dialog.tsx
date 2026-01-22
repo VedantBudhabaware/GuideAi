@@ -1,18 +1,22 @@
-import { ResponsiveDialog } from "@/components/responsive-dialog";
-import { AgentGetOne } from "../../types";
 import { AgentForm } from "./agent-form";
+import { AgentGetOne } from "../../types";
+import { ResponsiveDialog } from "@/components/responsive-dialog";
 
 interface UpdateAgentDialogProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
-    initialValues: AgentGetOne;
-}
+    initialValues?: AgentGetOne;
+};
 
-const UpdateAgentDialog: React.FC<UpdateAgentDialogProps> = ({ open, onOpenChange, initialValues }) => {
+export const UpdateAgentDialog = ({
+    open,
+    onOpenChange,
+    initialValues,
+}: UpdateAgentDialogProps) => {
     return (
-        <ResponsiveDialog
+        <ResponsiveDialog 
             title="Edit Agent"
-            description="Edit the details of your agent"
+            description="Edit the agent details"
             open={open}
             onOpenChange={onOpenChange}
         >
@@ -24,5 +28,3 @@ const UpdateAgentDialog: React.FC<UpdateAgentDialogProps> = ({ open, onOpenChang
         </ResponsiveDialog>
     );
 };
-
-export default UpdateAgentDialog;

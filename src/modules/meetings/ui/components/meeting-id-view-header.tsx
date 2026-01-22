@@ -1,53 +1,40 @@
-import { ChevronRightIcon, MoreVerticalIcon, PencilIcon, TrashIcon } from "lucide-react";
-import Link from "next/link";
-
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import Link from 'next/link';
+import { ChevronRightIcon, TrashIcon, PencilIcon, MoreVerticalIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
 
 interface Props {
-    agentId: string;
-    agentName: string;
+    meetingId: string;
+    meetingName: string;
     onEdit: () => void;
     onRemove: () => void;
 }
 
-export const AgentIdViewHeader = ({ agentId, agentName, onEdit, onRemove }: Props) => {
+export const MeetingIdViewHeader = ({ meetingId, meetingName, onEdit, onRemove }: Props) => {
     return (
         <div className="flex items-center justify-between">
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="font-medium text-xl" asChild>
-                            <Link href={"/agents"}>My Agents</Link>
+                        <BreadcrumbLink asChild className="font-medium text-xl">
+                            <Link href="/meetings">My meetings</Link>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator className="text-foreground text-xl font-medium [&>svg]:size-4">
                         <ChevronRightIcon />
                     </BreadcrumbSeparator>
-
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="font-medium text-xl" asChild>
-                            <Link href={`/agents/${agentId}`}>{agentName}</Link>
+                        <BreadcrumbLink asChild className="font-medium text-xl text-foreground">
+                            <Link href={`/meetings/${meetingId}`}>{meetingName}</Link>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
-            {/* Without modal={false}, the dialog that this dropdown opens will be modal */}
+            {/* Without modal={false}, the dialog that this dropdown opens cause the website to get unclickable */}
             <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
-                    <Button variant={"ghost"}>
+                    <Button variant="ghost" size="icon">
                         <MoreVerticalIcon />
                     </Button>
                 </DropdownMenuTrigger>
@@ -63,5 +50,5 @@ export const AgentIdViewHeader = ({ agentId, agentName, onEdit, onRemove }: Prop
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>
-    )
+    );
 };

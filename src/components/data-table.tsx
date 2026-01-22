@@ -1,35 +1,20 @@
-"use client"
+"use client";
 
-import {
-    ColumnDef,
-    flexRender,
-    getCoreRowModel,
-    useReactTable,
-} from "@tanstack/react-table"
-
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableRow,
-} from "@/components/ui/table"
+import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 interface DataTableProps<TData, TValue> {
-    columns: ColumnDef<TData, TValue>[]
-    data: TData[]
+    data: TData[];
+    columns: ColumnDef<TData, TValue>[];
     onRowClick?: (row: TData) => void;
 }
 
-export function DataTable<TData, TValue>({
-    columns,
-    data,
-    onRowClick,
-}: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({ data, columns, onRowClick }: DataTableProps<TData, TValue>) {
     const table = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
-    })
+    });
 
     return (
         <div className="rounded-lg border bg-background overflow-hidden">
@@ -38,8 +23,8 @@ export function DataTable<TData, TValue>({
                     {table.getRowModel().rows?.length ? (
                         table.getRowModel().rows.map((row) => (
                             <TableRow
-                                onClick={() => onRowClick?.(row.original)}
                                 key={row.id}
+                                onClick={() => onRowClick?.(row.original)}
                                 data-state={row.getIsSelected() && "selected"}
                                 className="cursor-pointer"
                             >
@@ -52,13 +37,11 @@ export function DataTable<TData, TValue>({
                         ))
                     ) : (
                         <TableRow>
-                            <TableCell colSpan={columns.length} className="h-19 text-center text-muted-foreground">
-                                No results.
-                            </TableCell>
+                            <TableCell colSpan={columns.length} className="h-19 text-center text-muted-foreground">No data available</TableCell>
                         </TableRow>
                     )}
                 </TableBody>
             </Table>
         </div>
-    )
-}
+    );
+};

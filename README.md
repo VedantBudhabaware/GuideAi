@@ -82,9 +82,11 @@ Perfect for remote teams, online education, customer support, and any scenario w
 
 ## 🎬 Demo
 
-> **Note:** Add screenshots or video demo here once deployed
-
-<!-- ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here) -->
+![App Screenshot](https://github.com/VedantBudhabaware/GuideAi/blob/main/public/screenshot/Photo5.png)
+![App Screenshot](https://github.com/VedantBudhabaware/GuideAi/blob/main/public/screenshot/Photo1.png)
+![App Screenshot](https://github.com/VedantBudhabaware/GuideAi/blob/main/public/screenshot/Photo2.png)
+![App Screenshot](https://github.com/VedantBudhabaware/GuideAi/blob/main/public/screenshot/Photo3.png)
+![App Screenshot](https://github.com/VedantBudhabaware/GuideAi/blob/main/public/screenshot/Photo4.png)
 
 ```
 Quick preview of the platform:

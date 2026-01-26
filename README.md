@@ -6,23 +6,6 @@ Transform your meetings with AI agents that see, hear, and understand.
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Demo](#-demo)
-- [Tech Stack](#-tech-stack)
-- [Architecture](#-architecture)
-- [Getting Started](#-getting-started)
-- [Configuration](#-configuration)
-- [Development](#-development)
-- [Deployment](#-deployment)
-- [Environment Variables](#-environment-variables)
-- [Contributing](#-contributing)
-- [License](#-license)
-
----
-
 ## 🌟 Overview
 
 Meet AI is a cutting-edge video conferencing platform that revolutionizes online meetings by integrating intelligent AI agents directly into your calls. Unlike traditional meeting tools, Meet AI provides:
